@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "debug": "web-ext run --devtools -p \"C:\\Users\\dunkyl\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\t66ueuoh.default-nightly\" -f \"C:\\Program Files\\Firefox Nightly\\firefox.exe\"",
+    "build": "web-ext build --overwrite-dest"
+  },
+  "devDependencies": {
+    "web-ext": "^8.3.0"
+  }
+}

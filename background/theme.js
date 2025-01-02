@@ -1,21 +1,21 @@
 "use strict";
 
 const textProperties = [
-  "toolbar_text",
-  "textcolor",
-  "toolbar_field_text",
-  "tab_text",
-  "popup_text",
-  "popup_highlight_text",
+  // "toolbar_text",
+  // "textcolor",
+  // "toolbar_field_text",
+  // "tab_text",
+  // "popup_text",
+  // "popup_highlight_text",
 ];
 const opacityProperties = [
-  "toolbar",
-  "toolbar_field",
+  // "toolbar",
+  // "toolbar_field",
   "toolbar_field_border",
-  "toolbar_top_separator",
-  "toolbar_bottom_separator",
-  "toolbar_field_separator",
-  "toolbar_vertical_separator",
+  // "toolbar_top_separator",
+  // "toolbar_bottom_separator",
+  // "toolbar_field_separator",
+  // "toolbar_vertical_separator",
 ];
 const aliases = {
   accentcolor: "frame",
@@ -80,7 +80,13 @@ class Theme {
         colors: Object.assign({}, properties.colors, newColors),
       }, opacities);
     }
-    return browser.theme.update(windowId, theme);
+    // return browser.theme.update(windowId, theme);
+    return browser.theme.update(windowId, {
+      images: properties.images,
+      colors: {
+        "toolbar_field_border": background,
+      }
+    });
   }
 
   /**

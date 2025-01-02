@@ -66,6 +66,30 @@ new AddonState({
     }
   },
   onTabColorChange(tab) {
+    let color = this.state.tabColorMap.get(tab.id);
+    let colorPayload;
+    if (color) {
+      let [r, g, b] = color.components.map(x => x.toString(16).padStart(2, "0"));
+      colorPayload = `#${r}${g}${b}`;
+    } else {
+      colorPayload = "none";
+    }
+    console.log(`firefox ${color}`);
+    (async () => {
+      let ws = new WebSocket("ws://localhost:9953");
+      ws.addEventListener("open", () => {
+        ws.send(`firefox ${colorPayload}`);
+        let close_when_done = (() => {
+          if (ws.bufferedAmount == 0) {
+            ws.close();
+          } else {
+            setTimeout(close_when_done, 100);
+          }
+        });
+        setTimeout(close_when_done, 100);
+      });
+    })();
+
     return setColor(tab, this.state.tabColorMap);
   },
   async onNightMode() {
