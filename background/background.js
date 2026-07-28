@@ -74,7 +74,7 @@ new AddonState({
     } else {
       colorPayload = "none";
     }
-    console.log(`firefox ${color}`);
+    console.log(`firefox ${colorPayload}`);
     (async () => {
       let ws = new WebSocket("ws://localhost:9953");
       ws.addEventListener("open", () => {
